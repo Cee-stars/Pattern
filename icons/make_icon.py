@@ -10,9 +10,10 @@ from pathlib import Path
 OUT = Path(__file__).parent
 
 CX, CY = 512, 470      # centre of the compass top face
-R = 300                # case radius
 TILT = 0.80            # vertical squash = viewing angle
-DEPTH = 58             # case thickness seen from the side
+K = 1.23               # dial is drawn at r=244 and scaled up to fill the space
+R = round(244 * K)     # dial radius
+DIAL_DEPTH = 22        # thickness of the dial plate seen from the side
 
 
 def ticks():
@@ -82,6 +83,12 @@ def svg(full_bleed: bool) -> str:
       <stop offset="0.55" stop-color="#a87a2c"/>
       <stop offset="1" stop-color="#4a3210"/>
     </linearGradient>
+    <linearGradient id="plateSide" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8f8466"/>
+      <stop offset="0.35" stop-color="#e4dbc2"/>
+      <stop offset="0.6" stop-color="#b8ad8f"/>
+      <stop offset="1" stop-color="#6f6650"/>
+    </linearGradient>
     <!-- brass top rim -->
     <linearGradient id="rim" x1="0.15" y1="0" x2="0.85" y2="1">
       <stop offset="0" stop-color="#fff1c2"/>
@@ -125,30 +132,16 @@ def svg(full_bleed: bool) -> str:
   {clip_open}
   <g transform="translate({CX} {CY + (45 if full_bleed else 30)}) scale({scale}) translate({-CX} {-CY})">
     <!-- shadow on the ground -->
-    <ellipse cx="{CX}" cy="{CY + DEPTH + ry * 0.92}" rx="{R * 0.98}" ry="{ry * 0.42}" fill="#021b20" opacity="0.55" filter="url(#soft)"/>
+    <ellipse cx="{CX}" cy="{CY + DIAL_DEPTH + ry * 0.9}" rx="{R * 0.95}" ry="{ry * 0.38}" fill="#021b20" opacity="0.55" filter="url(#soft)"/>
 
-    <!-- case side (gives the thickness) -->
-    <path d="M {CX - R} {CY} L {CX - R} {CY + DEPTH} A {R} {ry} 0 0 0 {CX + R} {CY + DEPTH} L {CX + R} {CY} Z" fill="url(#side)"/>
-    <ellipse cx="{CX}" cy="{CY + DEPTH}" rx="{R}" ry="{ry}" fill="none" stroke="#3a2709" stroke-width="3" opacity="0.6"/>
-    <!-- groove around the side -->
-    <path d="M {CX - R} {CY + DEPTH * 0.45} A {R} {ry} 0 0 0 {CX + R} {CY + DEPTH * 0.45}" fill="none" stroke="#3a2709" stroke-width="5" opacity="0.45"/>
-    <path d="M {CX - R} {CY + DEPTH * 0.45 + 5} A {R} {ry} 0 0 0 {CX + R} {CY + DEPTH * 0.45 + 5}" fill="none" stroke="#ffe7a0" stroke-width="2" opacity="0.5"/>
-
-    <!-- crown / ring at the top (north) -->
-    <g transform="translate({CX} {CY - ry - 6})">
-      <rect x="-30" y="-46" width="60" height="58" rx="10" fill="url(#side)"/>
-      <ellipse cx="0" cy="-46" rx="30" ry="12" fill="url(#rim)"/>
-      <ellipse cx="0" cy="-88" rx="52" ry="40" fill="none" stroke="url(#rim)" stroke-width="16"/>
-      <ellipse cx="0" cy="-88" rx="52" ry="40" fill="none" stroke="#5e3f12" stroke-width="2" opacity="0.5"/>
-    </g>
+    <!-- the dial plate's own thickness (no metal case) -->
+    <path d="M {CX - R} {CY} L {CX - R} {CY + DIAL_DEPTH} A {R} {ry} 0 0 0 {CX + R} {CY + DIAL_DEPTH} L {CX + R} {CY} Z" fill="url(#plateSide)"/>
 
     <!-- everything on the top face, drawn as a circle then tilted -->
     <g transform="translate({CX} {CY}) scale(1 {TILT})">
-      <circle r="{R}" fill="url(#rim)"/>
-      <circle r="{R - 6}" fill="none" stroke="#fff4cf" stroke-width="3" opacity="0.6"/>
-      <circle r="{R - 34}" fill="url(#rimInner)"/>
+     <g transform="scale({K})">
       <circle r="244" fill="url(#dial)"/>
-      <circle r="244" fill="url(#dialWall)"/>
+      <circle r="243" fill="none" stroke="#fffdf4" stroke-width="2" opacity="0.8"/>
       {rose()}
       <g>
       {ticks()}
@@ -180,6 +173,7 @@ def svg(full_bleed: bool) -> str:
       <!-- glass highlight -->
       <circle r="244" fill="url(#glass)"/>
       <path d="M -200 -110 A 230 230 0 0 1 60 -226 A 260 260 0 0 0 -170 -60 Z" fill="#ffffff" opacity="0.35"/>
+     </g>
     </g>
   </g>
   {clip_close}
