@@ -17,6 +17,7 @@
   --p1: #1f6f78; --p1-bg: #dcefef;
   --p2: #6b4ab0; --p2-bg: #ebe4f7;
   --p3: #2f7a3a; --p3-bg: #e0f1e0;
+  --p4: #a3366b; --p4-bg: #f8e1ec;
   --ok: #2f7a3a;
   --ng: #b3352b;
   --f-display: "Bitter", Georgia, serif;
@@ -31,6 +32,7 @@
     --p1: #6cc4cc; --p1-bg: #173436;
     --p2: #b49af0; --p2-bg: #2c2440;
     --p3: #7fcf88; --p3-bg: #1b3420;
+    --p4: #ee8fbd; --p4-bg: #3a1c2b;
     --ok: #7fcf88; --ng: #f08a80;
     color-scheme: dark;
   }
@@ -42,6 +44,7 @@
   --p1: #6cc4cc; --p1-bg: #173436;
   --p2: #b49af0; --p2-bg: #2c2440;
   --p3: #7fcf88; --p3-bg: #1b3420;
+  --p4: #ee8fbd; --p4-bg: #3a1c2b;
   --ok: #7fcf88; --ng: #f08a80;
   color-scheme: dark;
 }
@@ -88,6 +91,7 @@ nav.tabs button[aria-selected="true"] { background: var(--accent); color: var(--
 .k1 { color: var(--p1); background: var(--p1-bg); }
 .k2 { color: var(--p2); background: var(--p2-bg); }
 .k3 { color: var(--p3); background: var(--p3-bg); }
+.k4 { color: var(--p4); background: var(--p4-bg); }
 .q { font-family: var(--f-display); font-weight: 700; font-size: 1.3rem; }
 
 /* steps */
@@ -182,7 +186,7 @@ function sentHTML(p, en) {
   return parts.map((t, i) => {
     const text = i === parts.length - 1 && mark ? t.slice(0, -mark.length).trim() : t;
     const lab = labels[i] ? `<small>${esc(labels[i])}</small>` : "";
-    return `<span class="slot k${i % 4}">${esc(text)}${lab}</span>`;
+    return `<span class="slot k${i % 5}">${esc(text)}${lab}</span>`;
   }).join("") + (mark ? `<span class="q">${esc(mark)}</span>` : "");
 }
 
