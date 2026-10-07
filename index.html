@@ -70,6 +70,10 @@ section { display: flex; flex-direction: column; gap: 16px; }
 
 /* list */
 .list { display: flex; flex-direction: column; gap: 10px; }
+.results { display: flex; flex-direction: column; gap: 10px; }
+.search input { font: 1rem var(--f-body); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; width: 100%; }
+.search input:focus { border-color: var(--accent); }
+mark.hit { background: var(--p0-bg); color: var(--p0); border-radius: 3px; padding: 0 1px; }
 .item { text-align: left; width: 100%; font: inherit; color: inherit; background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; cursor: pointer; display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: center; }
 .item:hover { border-color: var(--accent); }
 .item .t { font-weight: 700; font-size: 1.1rem; min-width: 0; }
@@ -219,27 +223,49 @@ const current = () => patterns.find(p => p.id === view.id);
 function render() {
   const app = $("app");
   if (view.name === "detail" && !current()) view = { name: "list" };
+  const typing = document.activeElement?.id === "q";
   if (view.name === "list") app.innerHTML = listHTML();
   else if (view.name === "detail") app.innerHTML = detailHTML(current());
   else app.innerHTML = editHTML();
   bind();
+  if (typing && $("q")) { const q = $("q"); q.focus(); q.setSelectionRange(q.value.length, q.value.length); }
 }
 
+// search: "な" → patterns whose name (or English template) starts with な; katakana/hiragana and case are treated alike
+let query = "";
+const norm = t => String(t || "").normalize("NFKC").toLowerCase().replace(/[\u30a1-\u30f6]/g, c => String.fromCharCode(c.charCodeAt(0) - 0x60)).trim();
+function itemHTML(p, q) {
+  const n = (p.examples || []).length;
+  const k = Object.keys(local.get(knownKey(p.id), {})).filter(i => i < n).length;
+  const t = String(p.title || "");
+  const title = q && norm(t).startsWith(q) && norm(t.slice(0, q.length)) === q
+    ? `<mark class="hit">${esc(t.slice(0, q.length))}</mark>${esc(t.slice(q.length))}` : esc(t);
+  return `<button class="item" data-open="${esc(p.id)}">
+      <span class="t">${title}</span>
+      <span class="meta">例文 ${n}<br>覚えた ${k}</span>
+      <span class="f">${esc(p.formula)}</span>
+      <span class="mini"><i style="width:${n ? k / n * 100 : 0}%"></i></span>
+    </button>`;
+}
+function resultsHTML() {
+  const q = norm(query);
+  if (!q) return `<div class="list">${patterns.map(p => itemHTML(p, "")).join("")}</div>`;
+  const starts = patterns.filter(p => norm(p.title).startsWith(q) || norm(p.formula).startsWith(q));
+  const contains = patterns.filter(p => !starts.includes(p) && (norm(p.title).includes(q) || norm(p.formula).includes(q)));
+  let h = "";
+  h += starts.length
+    ? `<div class="label">「${esc(query.trim())}」で始まるパターン ${starts.length}件</div><div class="list">${starts.map(p => itemHTML(p, q)).join("")}</div>`
+    : `<p class="notice" style="margin:0">「${esc(query.trim())}」で始まるパターンはありません。</p>`;
+  if (contains.length) h += `<div class="label">「${esc(query.trim())}」を含むパターン ${contains.length}件</div><div class="list">${contains.map(p => itemHTML(p, "")).join("")}</div>`;
+  return h;
+}
 function listHTML() {
   let body;
   if (dbState === "loading") body = `<p class="notice">読み込み中…</p>`;
   else if (dbState === "none") body = `<div class="panel"><p class="notice" style="margin:0">保存先に接続できませんでした。claude.ai にサインインした状態でこのページを開くと、パターンの一覧が表示されます。</p></div>`;
   else if (!patterns.length) body = `<div class="panel"><h2>パターンはまだありません</h2><p class="notice" style="margin:0">「＋ 新しいパターン」から、覚えたい文の型を追加してください。</p></div>`;
-  else body = `<div class="list">` + patterns.map(p => {
-    const n = (p.examples || []).length;
-    const k = Object.keys(local.get(knownKey(p.id), {})).filter(i => i < n).length;
-    return `<button class="item" data-open="${esc(p.id)}">
-      <span class="t">${esc(p.title)}</span>
-      <span class="meta">例文 ${n}<br>覚えた ${k}</span>
-      <span class="f">${esc(p.formula)}</span>
-      <span class="mini"><i style="width:${n ? k / n * 100 : 0}%"></i></span>
-    </button>`;
-  }).join("") + `</div>`;
+  else body = `<div class="search"><input type="search" id="q" value="${esc(query)}" placeholder="パターンを検索（例：な、どこ、Why）" aria-label="パターンを検索" autocomplete="off"></div>
+    <div class="results" id="results" aria-live="polite">${resultsHTML()}</div>`;
   return `<section>
     <header>
       <h1>英語パターンノート</h1>
@@ -364,11 +390,15 @@ function editHTML() {
 }
 
 // ---------- wiring ----------
-function bind() {
+function bindOpen() {
   document.querySelectorAll("[data-open]").forEach(b => b.onclick = () => go({ name: "detail", id: b.dataset.open, tab: local.get("pm.tab", "learn") }));
+}
+function bind() {
+  bindOpen();
   document.querySelectorAll("[data-home]").forEach(b => b.onclick = () => go({ name: "list" }));
   document.querySelectorAll("[data-edit]").forEach(b => b.onclick = () => go({ name: "edit", id: b.dataset.edit }));
   document.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => { view.tab = b.dataset.tab; local.set("pm.tab", view.tab); render(); });
+  if ($("q")) $("q").oninput = e => { query = e.target.value; $("results").innerHTML = resultsHTML(); bindOpen(); };
   if ($("newBtn")) $("newBtn").onclick = () => go({ name: "edit", id: null });
   if (view.name === "detail") {
     if (view.tab === "card" && $("cardBox")) startCards();
