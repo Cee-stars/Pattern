@@ -1,0 +1,343 @@
+{
+  "patterns": [
+    {
+      "id": "what-made-you",
+      "createdAt": 1791367000000,
+      "decoys": [
+        "to",
+        "why",
+        "came",
+        "did"
+      ],
+      "examples": [
+        {
+          "en": "What / made / you / want to do that?",
+          "hint": "過去の話 → made",
+          "jp": "どうしてそれをやりたいと思ったの？"
+        },
+        {
+          "en": "What / made / you / come to Japan?",
+          "hint": "came にしない。原形 come",
+          "jp": "どうして日本に来たの？"
+        },
+        {
+          "en": "What / made / you / change your mind?",
+          "hint": "change one's mind = 気が変わる",
+          "jp": "どうして気が変わったの？"
+        },
+        {
+          "en": "What / made / you / decide to study English?",
+          "hint": "decide の後ろは to 不定詞のままでOK",
+          "jp": "どうして英語を勉強しようと思ったの？"
+        },
+        {
+          "en": "What / made / you / choose that job?",
+          "hint": "chose にしない。原形 choose",
+          "jp": "どうしてその仕事を選んだの？"
+        },
+        {
+          "en": "What / made / you / become a teacher?",
+          "hint": "became にしない。原形 become",
+          "jp": "どうして先生になったの？"
+        },
+        {
+          "en": "What / made / you / move here?",
+          "hint": "move = 引っ越す",
+          "jp": "どうしてここに引っ越してきたの？"
+        },
+        {
+          "en": "What / made / you / quit your job?",
+          "hint": "quit は原形も過去形も quit",
+          "jp": "どうして仕事を辞めたの？"
+        },
+        {
+          "en": "What / made / you / start using this app?",
+          "hint": "start ～ing = ～し始める",
+          "jp": "どうしてこのアプリを使い始めたの？"
+        },
+        {
+          "en": "What / made / her / cry?",
+          "hint": "誰が = 彼女 → her（目的格）",
+          "jp": "どうして彼女は泣いたの？"
+        },
+        {
+          "en": "What / made / him / say that?",
+          "hint": "誰が = 彼 → him（目的格）",
+          "jp": "どうして彼はそう言ったの？"
+        },
+        {
+          "en": "What / made / them / give up the plan?",
+          "hint": "誰が = 彼ら → them（目的格）",
+          "jp": "どうして彼らは計画をやめたの？"
+        },
+        {
+          "en": "What / makes / you / think so?",
+          "hint": "今そう思っている → makes",
+          "jp": "どうしてそう思うの？"
+        },
+        {
+          "en": "What / makes / you / get up early every day?",
+          "hint": "習慣の話 → makes",
+          "jp": "どうしていつも早起きするの？"
+        },
+        {
+          "en": "What / makes / you / like this song?",
+          "hint": "今の気持ち → makes",
+          "jp": "どうしてこの曲が好きなの？"
+        }
+      ],
+      "formula": "What made S V（原形）?",
+      "meaning": "何がSに〜させたのか／どうしてSは〜したの？",
+      "parts": [
+        "原因",
+        "make",
+        "誰が",
+        "何を（原形）"
+      ],
+      "steps": [
+        {
+          "b": "どうしてそれをやりたいと思ったの？\n→ 何がそれをやりたいと思わせたの？",
+          "h": "日本語の「どうして」を「何が」に言い換える"
+        },
+        {
+          "b": "主語 = What（きっかけ・原因）",
+          "h": "主語を「原因」にする"
+        },
+        {
+          "b": "過去の話 → made　／　今・いつも → makes",
+          "h": "動詞に make を置き、時制を合わせる"
+        },
+        {
+          "b": "What made you（me / him / her / them も同じ形）",
+          "h": "「誰が」を目的語に置く"
+        },
+        {
+          "b": "make は使役動詞なので to を付けない\nWhat made you want to do that?",
+          "h": "「何を」を原形で続ける"
+        }
+      ],
+      "tips": [
+        "× What made you to come…　to は付けない",
+        "× What made you came…　過去形にするのは made だけ",
+        "What makes you think so?　今そう思っている理由は makes"
+      ],
+      "title": "どうして〜したの？",
+      "updatedAt": 1791367000000
+    },
+    {
+      "id": "why-looking-forward",
+      "createdAt": 1791368000000,
+      "decoys": [
+        "look",
+        "see",
+        "do",
+        "fun"
+      ],
+      "examples": [
+        {
+          "en": "Why / are / you / looking forward to / it?",
+          "hint": "省略された「それを」を it で補う",
+          "jp": "なんで楽しみなの？"
+        },
+        {
+          "en": "Why / are / you / looking forward to / it so much?",
+          "hint": "そんなに = so much（文末に置く）",
+          "jp": "どうしてそんなに楽しみなの？"
+        },
+        {
+          "en": "Why / are / you / looking forward to / the weekend?",
+          "hint": "目的語 = the weekend",
+          "jp": "なんで週末が楽しみなの？"
+        },
+        {
+          "en": "Why / are / you / looking forward to / the trip?",
+          "hint": "目的語 = the trip",
+          "jp": "なんで旅行を楽しみにしているの？"
+        },
+        {
+          "en": "Why / are / you / looking forward to / tomorrow?",
+          "hint": "tomorrow はそのまま目的語になる",
+          "jp": "なんで明日が楽しみなの？"
+        },
+        {
+          "en": "Why / are / you / looking forward to / seeing him?",
+          "hint": "to の後ろは ～ing。to see にしない",
+          "jp": "なんで彼に会うのを楽しみにしているの？"
+        },
+        {
+          "en": "Why / are / you / looking forward to / watching the movie?",
+          "hint": "to の後ろは ～ing。to watch にしない",
+          "jp": "なんでその映画を見るのを楽しみにしているの？"
+        },
+        {
+          "en": "Why / is / she / looking forward to / the concert?",
+          "hint": "主語が she → is",
+          "jp": "どうして彼女はコンサートを楽しみにしているの？"
+        },
+        {
+          "en": "Why / are / they / looking forward to / summer vacation?",
+          "hint": "主語が they → are",
+          "jp": "なんで彼らは夏休みを楽しみにしているの？"
+        }
+      ],
+      "formula": "Why are you looking forward to ～?",
+      "meaning": "（あなたは）なんで（それを）楽しみにしているの？",
+      "parts": [
+        "疑問詞",
+        "be動詞",
+        "主語",
+        "動詞句（～ing）",
+        "目的語"
+      ],
+      "steps": [
+        {
+          "b": "「なんで楽しみなの？」→「（あなたは）なんで（それを）楽しみにしているの？」\n日本語は主語・目的語を省くので、英訳の前に必ず復元する。",
+          "h": "省略された主語・目的語を補う"
+        },
+        {
+          "b": "「楽しみ」は日本語では名詞っぽいが、英語に「楽しみ」という便利な形容詞はない。\n→ 動詞句 look forward to（〜を楽しみに待つ）で表すと決める。\n（look forward to は他動詞句。必ず目的語が要る＝だから①で「それを」を補う必要があった）",
+          "h": "品詞を日本語に引きずられない"
+        },
+        {
+          "b": "You look forward to it.",
+          "h": "まず平叙文を組み立てる"
+        },
+        {
+          "b": "You are looking forward to it.\n※ look forward to は「今の気持ち」を言うとき進行形が自然。I look forward to 〜 は手紙などの硬い形。",
+          "h": "「今まさにその状態」なので進行形にする"
+        },
+        {
+          "b": "Why + You are looking forward to it.",
+          "h": "疑問詞 Why を文頭に置く"
+        },
+        {
+          "b": "→ Why are you looking forward to it?",
+          "h": "be動詞を主語の前に出す（倒置）"
+        }
+      ],
+      "tips": [
+        "× Why you are looking forward to it?　be動詞は主語の前に出す",
+        "× Why are you look forward to it?　進行形なので looking",
+        "× looking forward to see him　to の後ろは名詞か ～ing（seeing him）",
+        "× Why are you looking forward?　目的語（it など）を忘れない",
+        "主語が he / she なら is、they なら are"
+      ],
+      "title": "なんで楽しみなの？",
+      "updatedAt": 1791368000000
+    },
+    {
+      "id": "where-is-the",
+      "createdAt": 1791369000000,
+      "decoys": [
+        "there",
+        "a",
+        "does",
+        "in"
+      ],
+      "examples": [
+        {
+          "en": "Where / is / the search bar?",
+          "hint": "口語では Where's the search bar?",
+          "jp": "検索欄はどこにあるの？"
+        },
+        {
+          "en": "Where / is / the bathroom?",
+          "hint": "口語では Where's the bathroom?",
+          "jp": "どこにトイレがあるの？"
+        },
+        {
+          "en": "Where / is / the settings button?",
+          "hint": "設定 = settings（s が付く）",
+          "jp": "どこに設定ボタンがあるの？"
+        },
+        {
+          "en": "Where / is / the save button?",
+          "hint": "お互い分かっているボタン → the",
+          "jp": "保存ボタンはどこにあるの？"
+        },
+        {
+          "en": "Where / is / the logout button?",
+          "hint": "logout = ログアウト",
+          "jp": "ログアウトのボタンはどこ？"
+        },
+        {
+          "en": "Where / is / the station?",
+          "hint": "「に」「が」は訳さない",
+          "jp": "駅はどこにあるの？"
+        },
+        {
+          "en": "Where / is / the exit?",
+          "hint": "exit = 出口",
+          "jp": "出口はどこ？"
+        },
+        {
+          "en": "Where / is / the elevator?",
+          "hint": "the + 名詞",
+          "jp": "エレベーターはどこにあるの？"
+        },
+        {
+          "en": "Where / is / the charger?",
+          "hint": "charger = 充電器",
+          "jp": "充電器はどこにある？"
+        },
+        {
+          "en": "Where / are / my keys?",
+          "hint": "複数 → are。my を付けるときは the は不要",
+          "jp": "私の鍵はどこにあるの？"
+        },
+        {
+          "en": "Where / are / my shoes?",
+          "hint": "靴は2つで1組 → shoes, are",
+          "jp": "私の靴はどこ？"
+        }
+      ],
+      "formula": "Where is / Where are + the + 名詞?",
+      "meaning": "（あるのは分かっている）〜はどこ？　場所を聞く",
+      "parts": [
+        "疑問詞",
+        "be動詞",
+        "the + 名詞"
+      ],
+      "steps": [
+        {
+          "b": "「〜がある」を見ると There is 〜 を思い浮かべがちだが、There is は「存在するかどうか（新情報）」を言う構文。\nここは「あるのは分かっていて、場所を知りたい」＝既知のもの。\n→ Where is 〜? を使うと決める。\n（比較）\nIs there a search bar? =「検索欄ってある？」有無を聞く\nWhere is the search bar? =「検索欄はどこ？」場所を聞く ← 今回",
+          "h": "日本語の「ある」に引きずられない"
+        },
+        {
+          "b": "「そのアプリに1つある、お互い分かっているもの」→ 定冠詞 the\n→ the search bar",
+          "h": "冠詞を決める"
+        },
+        {
+          "b": "「検索欄」= search bar（名詞）。横長の入力欄の定番表現。",
+          "h": "名詞を選ぶ"
+        },
+        {
+          "b": "The search bar is there（どこかにある）\n※ 場所を表す語の位置を意識しておく",
+          "h": "平叙文を組み立てる"
+        },
+        {
+          "b": "Where + the search bar is",
+          "h": "場所を問う疑問詞 Where を文頭に置く"
+        },
+        {
+          "b": "→ Where is the search bar?",
+          "h": "be動詞を主語の前に出す（倒置）"
+        },
+        {
+          "b": "→ Where's the search bar?",
+          "h": "口語では短縮"
+        }
+      ],
+      "tips": [
+        "「に」「が」の助詞は英語に訳さず、語順で処理する",
+        "× Where the search bar is?　be動詞は主語の前に出す",
+        "× Where is there the search bar?　場所を聞くときは there を使わない",
+        "× Where is a search bar?　お互い分かっているものなので the",
+        "名詞が複数なら are：Where are my keys?",
+        "口語では Where's（Where is の短縮）。Where are はふつう短縮しない"
+      ],
+      "title": "どこに〜があるの？",
+      "updatedAt": 1791369000000
+    }
+  ]
+}
