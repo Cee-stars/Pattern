@@ -1,10 +1,13 @@
-"""Build the standalone app (GitHub Pages) into docs/.
+"""Build the standalone app (GitHub Pages).
 
-index.html is written for claude.ai artifacts (no <!doctype>/<head>), so this
+app.html is written for claude.ai artifacts (no <!doctype>/<head>), so this
 wraps it in a full document and adds what a home-screen / Dock app needs:
 manifest, icons, and a small service worker for offline use.
 
-Run after changing index.html, patterns.json or the icons:
+Output goes both to the repo root and to docs/, so the site works whether
+GitHub Pages publishes from "/ (root)" or from "/docs".
+
+Run after changing app.html, patterns.json or the icons:
     python3 build_pages.py
 """
 import json
@@ -17,7 +20,7 @@ APP_NAME = "英語パターンノート"
 SHORT_NAME = "パターン"
 THEME = "#0b0b0c"
 
-src = (ROOT / "index.html").read_text()
+src = (ROOT / "app.html").read_text()
 # everything before the first <style> (title, meta, font links) belongs in <head>
 cut = src.index("<style>")
 head_extra, body = src[:cut].strip(), src[cut:]
@@ -86,13 +89,13 @@ self.addEventListener("fetch", e => {
 });
 """
 
-DOCS.mkdir(exist_ok=True)
-(DOCS / "icons").mkdir(exist_ok=True)
-(DOCS / "index.html").write_text(page)
-(DOCS / "manifest.webmanifest").write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
-(DOCS / "sw.js").write_text(sw)
-(DOCS / ".nojekyll").write_text("")
+for out in (ROOT, DOCS):
+    (out / "icons").mkdir(parents=True, exist_ok=True)
+    (out / "index.html").write_text(page)
+    (out / "manifest.webmanifest").write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
+    (out / "sw.js").write_text(sw)
+    (out / ".nojekyll").write_text("")
 shutil.copy(ROOT / "patterns.json", DOCS / "patterns.json")
 for name in ["apple-touch-icon.png", "icon-192.png", "icon-512.png", "icon-1024.png"]:
     shutil.copy(ROOT / "icons" / name, DOCS / "icons" / name)
-print("built docs/")
+print("built index.html and docs/")
