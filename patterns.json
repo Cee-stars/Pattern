@@ -378,7 +378,9 @@
         "× What you eat?　do を忘れない",
         "× What do makes you happy?　主語を聞くときは do を使わない",
         "× What does he likes?　does のあとの動詞は原形",
-        "人を聞くときは who、場所は where、時は when、様子は how"
+        "人を聞くときは who、場所は where、時は when、様子は how",
+        "× What was happened?　happen は受け身にならない",
+        "× What did happen?　主語を聞くので did は要らない"
       ],
       "examples": [
         {
@@ -435,6 +437,16 @@
           "jp": "誰がそう言ったの？",
           "en": "Who / said / that?",
           "hint": "主語（誰が）を聞く → did なし。そのまま過去形 said"
+        },
+        {
+          "jp": "さっき何が起きたの？",
+          "en": "What / just / happened?",
+          "hint": "主語（何が）を聞く → did なし。さっき = just（動詞の直前）"
+        },
+        {
+          "jp": "さっき何があったの？",
+          "en": "What / happened / just now?",
+          "hint": "just now（さっき）は文の最後でもOK"
         }
       ],
       "decoys": [
@@ -444,7 +456,7 @@
         "is"
       ],
       "createdAt": 1791458000000,
-      "updatedAt": 1791458000000
+      "updatedAt": 1791460000000
     }
   ]
 }
