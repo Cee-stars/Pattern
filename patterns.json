@@ -338,6 +338,113 @@
       ],
       "title": "どこに〜があるの？",
       "updatedAt": 1791369000000
+    },
+    {
+      "id": "wh-question-words",
+      "title": "何を〜するの？（疑問詞のしくみ）",
+      "formula": "疑問詞 + do / does + 主語 + 動詞?",
+      "meaning": "文の中の1か所を抜いて、その穴に合う疑問詞を前に出す",
+      "parts": [
+        "疑問詞",
+        "do / does",
+        "主語",
+        "動詞（原形）",
+        "残り"
+      ],
+      "steps": [
+        {
+          "h": "まず平叙文を作る",
+          "b": "You eat natto.（あなたは納豆を食べる）"
+        },
+        {
+          "h": "聞きたい1か所を決めて抜く",
+          "b": "natto（名詞・目的語）を聞きたい\n→ You eat ___."
+        },
+        {
+          "h": "穴に合う疑問詞を選ぶ",
+          "b": "natto（名詞・目的語）→ what\nYuito（名詞・人）→ who\nat home（場所）→ where\nat 7（時）→ when\nslowly（副詞・様子）→ how"
+        },
+        {
+          "h": "疑問詞を文頭に出し、do を主語の前に置く",
+          "b": "→ What do you eat?\n動詞は原形のまま（eat）。主語が he / she なら does。"
+        },
+        {
+          "h": "主語を聞くときは do を使わない",
+          "b": "「何が」「誰が」のように主語そのものを聞くときは、疑問詞がそのまま主語になる。\n→ What makes you happy?（何があなたを幸せにする？）"
+        }
+      ],
+      "tips": [
+        "what は名詞専用。「何を」（目的語）でも「何が」（主語）でも使える",
+        "× What you eat?　do を忘れない",
+        "× What do makes you happy?　主語を聞くときは do を使わない",
+        "× What does he likes?　does のあとの動詞は原形",
+        "人を聞くときは who、場所は where、時は when、様子は how"
+      ],
+      "examples": [
+        {
+          "jp": "何を食べるの？",
+          "en": "What / do / you / eat?",
+          "hint": "natto（目的語）を what に置き換えた形"
+        },
+        {
+          "jp": "誰が好きなの？",
+          "en": "Who / do / you / like?",
+          "hint": "人（目的語）→ who"
+        },
+        {
+          "jp": "どこで食べるの？",
+          "en": "Where / do / you / eat?",
+          "hint": "at home（場所）→ where"
+        },
+        {
+          "jp": "いつ食べるの？",
+          "en": "When / do / you / eat?",
+          "hint": "at 7（時）→ when"
+        },
+        {
+          "jp": "どうやって食べるの？",
+          "en": "How / do / you / eat / it?",
+          "hint": "様子・方法 → how。食べる物は it で残す"
+        },
+        {
+          "jp": "何を飲むの？",
+          "en": "What / do / you / drink?",
+          "hint": "目的語 → what"
+        },
+        {
+          "jp": "週末は何をするの？",
+          "en": "What / do / you / do / on weekends?",
+          "hint": "1つ目の do は疑問文の do、2つ目は「する」の do"
+        },
+        {
+          "jp": "どこに住んでいるの？",
+          "en": "Where / do / you / live?",
+          "hint": "場所 → where"
+        },
+        {
+          "jp": "彼は何が好きなの？",
+          "en": "What / does / he / like?",
+          "hint": "主語が he → does。like は原形のまま"
+        },
+        {
+          "jp": "何があなたを幸せにするの？",
+          "en": "What / makes / you / happy?",
+          "hint": "主語（何が）を聞く → do なし。What が主語なので makes"
+        },
+        {
+          "jp": "誰がそう言ったの？",
+          "en": "Who / said / that?",
+          "hint": "主語（誰が）を聞く → did なし。そのまま過去形 said"
+        }
+      ],
+      "decoys": [
+        "does",
+        "did",
+        "are",
+        "is"
+      ],
+      "createdAt": 1791458000000,
+      "updatedAt": 1791458000000
     }
   ]
 }
